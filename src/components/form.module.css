@@ -1,0 +1,18 @@
+
+
+.middle{
+    display: flex;
+    background-color:burlywood;
+    justify-content: center;
+    align-items: center;
+    width: 90vh;
+}
+
+.info{
+
+    display: none;
+}
+
+label:hover{
+    
+}
