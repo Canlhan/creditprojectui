@@ -2,20 +2,91 @@
 
 
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 import style from './form.module.css'
 
-const Form = () => {
+const Form = ({addLoan}) => {
 
-
+    const navigate=useNavigate();
+    const [customer,setCustomer]=useState(null);
+    const[apiCustomer,setApiCustomer]=useState(null);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
+    const[loan,setLoan]=useState(null);
     const onSubmit=(data)=>{
         
-        console.log("data: "+JSON.stringify(data));
+       console.log("dataaa: "+JSON.stringify(data));
+        setCustomer(data);
 
     }
+
+    
+
+    const addCustomer=async ()=>{
+        const url="http://localhost:8086/api/v1/customer/";
+        const result =await fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify(customer)
+        }).then((response)=>
+        response.json())
+        .then((data)=>{
+            localStorage.setItem("customerId",data.customerId);
+        setApiCustomer(data)
+        console.log("api custoemr: "+data)}
+        );
+        
+      
+
+    }
+
+
+    useEffect(()=>{
+
+        if(customer!==null){
+            addCustomer();
+        }
+
+    },[customer])
+
+
+    const appLoan=async (customer)=>{
+
+        const url="http://localhost:8086/api/v1/loan/";
+        const result =await fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({customer:customer})
+        }).then((response)=>
+        response.json()
+        ).then((data)=>{
+            
+            console.log("loan: "+JSON.stringify(data));
+            setLoan(data);
+            addLoan(data);
+            navigate("/applications")
+        });
+
+        
+        
+
+    }
+
+    useEffect(()=>{
+
+        if(apiCustomer!==null){
+
+            appLoan(apiCustomer);
+        }
+
+    },[apiCustomer])
+
   return (
     <>
     <form onSubmit={handleSubmit(onSubmit)} className={` ${style.middle}`}>
@@ -66,7 +137,8 @@ const Form = () => {
     </div>
 
     <div class={`row  mt-3 ${style.middle} `}>
-            <button type="submit" className='btn btn-primary w-50'> Application</button>             
+
+            <button   type="submit" className='btn btn-primary w-50'> Application</button>             
     </div>
     
     

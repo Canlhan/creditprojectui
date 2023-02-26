@@ -1,0 +1,12 @@
+
+
+
+.addApp{
+
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    margin-right: 5%;
+    margin-top:5%;
+}

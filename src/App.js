@@ -3,15 +3,18 @@ import './App.css';
 import Homepage from './pages/Homepage';
 import { Route, Routes,Redirect } from 'react-router-dom';
 import LoanApplication from './pages/LoanApplication';
+import { useState } from 'react';
 
 function App() {
+
+  const[loan,setLoan]=useState(null);
   return (
     <>
-    
+   
       
     <Routes>
-        <Route path='/' element={<Homepage/>}/>
-        <Route path='/applications' element={<LoanApplication/>}/>
+        <Route path='/' element={<Homepage addLoan={setLoan}/>}/>
+        <Route path='/applications' element={<LoanApplication loan={loan}/>}/>
       
       </Routes>
       

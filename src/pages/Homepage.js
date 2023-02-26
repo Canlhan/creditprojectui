@@ -7,7 +7,7 @@ import Form from '../components/Form'
 
 
 import styles from './homepage.module.css'
-const Homepage = () => {
+const Homepage = ({addLoan}) => {
     
 
  
@@ -22,7 +22,7 @@ const Homepage = () => {
       <div className={`row ${styles.middle}`}>
         
      
-        <Form/>
+        <Form addLoan={addLoan}/>
       </div>
 
      </div>
