@@ -35,7 +35,7 @@ const Loan = ({loan,customer}) => {
               {customer.creditScore.creditScore}
             </div>
             <div className="col">
-            {loan.approval?loan.limit:0}
+            {loan.approval?loan.creditLimit:0}
             </div>
             <div className="col-2">
                 <div className="check w-100 ">

@@ -10,3 +10,14 @@
     margin-right: 5%;
     margin-top:5%;
 }
+
+.newApp{
+    height: 100vh;
+    width: 100%;
+    
+    position: absolute;
+    z-index: 10000;
+    background-color: rgba(219, 228, 230, 0.526);
+   
+
+}

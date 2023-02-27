@@ -17,8 +17,8 @@ const Homepage = ({addLoan}) => {
   return (
     <>
     
-     <div className="container bg-primary  align-middle" >
-
+     <div className="container  align-middle" >
+      <h4> Credit Application</h4>
       <div className={`row ${styles.middle}`}>
         
      

@@ -89,8 +89,11 @@ const Form = ({addLoan}) => {
 
   return (
     <>
+
     <form onSubmit={handleSubmit(onSubmit)} className={` ${style.middle}`}>
+    
      <div>
+     <h4 className='mb-3'> Credit Application</h4>
      <div class={`row  `}>
                 <div class="col">
                     <label for="firstName" >FİRST NAME <span style={{color:'red'}}>* </span></label>
